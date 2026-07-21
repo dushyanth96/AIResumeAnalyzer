@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Keys - Phase 6 AI Resume Analyzer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <p class="eyebrow">Settings</p>
+        <h1>Bring Your Own Key</h1>
+        <p>
+          Save your Gemini, OpenAI, or Hugging Face keys locally in this browser.
+          The analyzer will send them only with your analysis requests.
+        </p>
+        <p class="notice" role="note">
+          OpenAI API keys require billing to be enabled or a paid tier.
+        </p>
+        <div class="hero-actions">
+          <button type="button" class="secondary" data-href="index.html">Home</button>
+          <button type="button" class="ghost" data-href="#get-keys">Get free API links</button>
+        </div>
+      </section>
+
+      <form id="api-keys-form">
+        <label>
+          Gemini API key
+          <input name="gemini_api_key" type="password" placeholder="AIza..." autocomplete="off" />
+        </label>
+        <label>
+          OpenAI API key
+          <input name="openai_api_key" type="password" placeholder="sk-..." autocomplete="off" />
+        </label>
+        <label>
+          Hugging Face token
+          <input name="hf_token" type="password" placeholder="hf_..." autocomplete="off" />
+        </label>
+        <div class="hero-actions">
+          <button type="submit">Save keys</button>
+          <button type="button" class="secondary" id="clear-keys">Clear keys</button>
+        </div>
+        <p id="saved-status" class="muted"></p>
+      </form>
+
+      <section id="get-keys">
+        <h2>Get API Links</h2>
+        <div class="link-grid">
+          <button type="button" data-url="https://aistudio.google.com/app/apikey">Gemini API key</button>
+          <button type="button" data-url="https://platform.openai.com/api-keys">OpenAI API key</button>
+          <button type="button" data-url="https://huggingface.co/settings/tokens">Hugging Face token</button>
+        </div>
+        <p class="muted">
+          Gemini and Hugging Face are the easiest BYOK options for experimentation.
+          OpenAI requires billing to be enabled.
+        </p>
+      </section>
+    </main>
+    <script src="settings.js"></script>
+  </body>
+</html>

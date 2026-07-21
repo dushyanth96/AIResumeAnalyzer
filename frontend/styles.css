@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  background: #f6f8fb;
+  color: #172033;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+section,
+form {
+  background: white;
+  border: 1px solid #dfe6ef;
+  border-radius: 8px;
+  margin-bottom: 18px;
+  padding: 22px;
+}
+
+.eyebrow {
+  color: #0f766e;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.notice {
+  border-left: 4px solid #c1121f;
+  color: #a31621;
+  background: #fff1f2;
+  border-radius: 8px;
+  margin-top: 14px;
+  padding: 12px 14px;
+  font-weight: 700;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+input,
+textarea,
+button {
+  border: 1px solid #c8d3df;
+  border-radius: 8px;
+  font: inherit;
+  padding: 12px;
+}
+
+button {
+  border: 0;
+  background: #0f766e;
+  color: white;
+  cursor: pointer;
+  font-weight: 800;
+}
+
+button.secondary,
+a.button {
+  background: #dfe7f2;
+  color: #172033;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.ghost,
+a.button.ghost {
+  background: transparent;
+  border: 1px solid #c8d3df;
+  color: #172033;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.muted {
+  color: #5b667a;
+}
+
+.link-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.link-grid button {
+  background: #eef2f7;
+  border: 1px solid #dfe6ef;
+  border-radius: 8px;
+  color: #172033;
+  padding: 14px;
+  text-align: left;
+  font-weight: 800;
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4ebf3;
+  padding: 10px 0;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+li,
+.metric {
+  background: #eef2f7;
+  border-radius: 999px;
+  display: inline-block;
+  margin: 5px;
+  padding: 7px 10px;
+}
+
+.question-list {
+  display: grid;
+  gap: 12px;
+}
+
+.question-card {
+  border: 1px solid #dfe6ef;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.question-card ul {
+  margin-top: 10px;
+}
