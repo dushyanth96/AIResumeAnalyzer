@@ -56,7 +56,7 @@ class AICoachService:
                 continue
             try:
                 return self._try_generate_with_quality_checks(
-                    provider, resume_text, job_description, skills, score_breakdown
+                    provider, resume_text, job_description, skills, score_breakdown, api_key
                 )
             except Exception as exc:
                 last_error = exc
@@ -86,6 +86,7 @@ class AICoachService:
         job_description: str,
         skills: SkillComparison,
         score_breakdown: dict[str, float],
+        api_key: str,
     ) -> AICoachOutput:
         coach_output = self._generate_with_ai(
             provider=provider,
@@ -93,6 +94,7 @@ class AICoachService:
             job_description=job_description,
             skills=skills,
             score_breakdown=score_breakdown,
+            api_key=api_key,
         )
         quality_issues = self._quality_issues(coach_output)
         if quality_issues:
@@ -102,6 +104,7 @@ class AICoachService:
                 job_description=job_description,
                 skills=skills,
                 score_breakdown=score_breakdown,
+                api_key=api_key,
                 quality_feedback=quality_issues,
             )
             quality_issues = self._quality_issues(coach_output)
@@ -118,6 +121,7 @@ class AICoachService:
         job_description: str,
         skills: SkillComparison,
         score_breakdown: dict[str, float],
+        api_key: str,
         quality_feedback: list[str] | None = None,
     ) -> AICoachOutput:
         from openai import OpenAI
@@ -160,7 +164,7 @@ class AICoachService:
         ]
 
         if provider == "openai":
-            client = OpenAI()
+            client = OpenAI(api_key=api_key)
             response = client.beta.chat.completions.parse(
                 model=self.settings.openai_model,
                 messages=messages,
@@ -170,11 +174,11 @@ class AICoachService:
             coach_output.ai_provider = f"openai:{self.settings.openai_model}"
             coach_output.ai_generated = True
             return coach_output
-            
+
         elif provider == "gemini":
             client = OpenAI(
                 base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
-                api_key=self.settings.gemini_api_key,
+                api_key=api_key,
             )
             response = client.beta.chat.completions.parse(
                 model="gemini-flash-latest",
@@ -185,11 +189,11 @@ class AICoachService:
             coach_output.ai_provider = "gemini:gemini-flash-latest"
             coach_output.ai_generated = True
             return coach_output
-            
+
         elif provider == "huggingface":
             client = OpenAI(
                 base_url="https://router.huggingface.co/hf-inference/v1/",
-                api_key=self.settings.hf_token,
+                api_key=api_key,
             )
             model = "meta-llama/Meta-Llama-3-8B-Instruct"
             
