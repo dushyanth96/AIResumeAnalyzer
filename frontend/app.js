@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8016";
+const API_BASE_URL = "https://airesumeanalyzer-4hko.onrender.com/";
 const form = document.querySelector("#form");
 const statusText = document.querySelector("#status");
 const result = document.querySelector("#result");
@@ -16,6 +16,7 @@ document.querySelectorAll("[data-href]").forEach((button) => {
   });
 });
 
+
 const STORAGE_KEYS = {
   gemini: "resumeAnalyzer.geminiApiKey",
   openai: "resumeAnalyzer.openaiApiKey",
@@ -25,6 +26,7 @@ const STORAGE_KEYS = {
 function getStoredValue(key) {
   return localStorage.getItem(key) || "";
 }
+
 
 function buildApiHeaders() {
   const headers = {};

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI Resume Analyzer
 
 ## Overview
@@ -116,3 +117,6 @@ pytest -q
 - The frontend stores user-entered keys locally in the browser.
 - OpenAI is supported, but the UI warns users that it needs billing or a paid
   tier.
+=======
+# AIResumeAnalyzer
+>>>>>>> 4292df59b45ac3ce5879c062baf1aae4097203aa
