@@ -65,8 +65,9 @@ async function checkApi() {
     const response = await fetch(`${API_BASE_URL}/`);
     if (!response.ok) throw new Error("offline");
     statusText.textContent = "API Online";
-  } catch {
-    statusText.textContent = "API Offline - start backend on port 8016";
+  } catch (error) {
+    statusText.textContent = `API Offline - ${error.message}`;
+    console.error("API check failed:", error);
   }
 }
 
