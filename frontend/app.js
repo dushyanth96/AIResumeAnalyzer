@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://airesumeanalyzer-4hko.onrender.com/";
+const API_BASE_URL = "https://airesumeanalyzer-4hko.onrender.com";
 const form = document.querySelector("#form");
 const statusText = document.querySelector("#status");
 const result = document.querySelector("#result");
@@ -48,6 +48,11 @@ function listItems(values) {
 async function loadHistory() {
   const response = await fetch(`${API_BASE_URL}/api/analyses`);
   const analyses = await response.json();
+  if (!Array.isArray(analyses)) {
+    console.error("Expected array but got:", analyses);
+    history.innerHTML = "<p>No history available</p>";
+    return;
+  }
   history.innerHTML = analyses
     .map(
       (analysis) => `
